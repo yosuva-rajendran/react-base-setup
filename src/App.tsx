@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from 'react-query';
-import './App.css';
+import './App.scss';
 import { AppContextProvider } from './context/AppContextProvider';
 import { Router } from './routes/Router';
 

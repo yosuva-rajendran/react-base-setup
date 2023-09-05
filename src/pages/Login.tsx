@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Input from '../components/default/Input';
 import logo from './../assets/icons/logo.png';
 import { useFormik } from 'formik';
@@ -11,11 +11,9 @@ interface ICredentials {
 }
 
 const Login = () => {
-  const mockEmail = 'test@gmail.com';
-  const mockPassword = 'test1';
-
   const [email, setMail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -25,12 +23,9 @@ const Login = () => {
     onSubmit: (values: ICredentials) => {
       setMail(values?.email);
       setPassword(values?.password);
+      navigate('/users');
     }
   });
-
-  if (mockEmail === email && mockPassword === password) {
-    return <Navigate to="/users" replace />;
-  }
 
   return (
     <div className="place-items-center h-screen grid">
